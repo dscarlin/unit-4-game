@@ -5,58 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+   
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script src="assets/javascript/game.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
    
 </head>
 <body>
-    
-    <h1>Lord of the Rings RPG</h1>
-    <div id="charOptions" ></div>
-    <h2>Your Character</h2>
-    <div id="yourCharacter" ></div>
-    <h2>Enemies Available to Attack</h2>
-    <div id="enemies" ></div>
-    <h2>Fight Section</h2>
-    <button id="attack">Attack</button>
-    <h2>Defender</h2>
-    <div id="defender" ></div>
-    <div id="fight" ></div>
-    <script type="text/template" id="cardTmpl">
-        <div class="card <%= background %>" data-index="<%= index %>">
-            <p><%= character.name %></p>
-            <img class="picture" src="<%= character.image %>" alt="<%= character.name %> image"/>
-            <p>Health: <%= character.healthPower %></p>
+
+    <div class="contianer">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-8 text-center">
+                <h1>Lord of the Rings</h1>
+                <h1>RPG</h1>
+           
+   
+                <div class="row justify-content"></div>
+                <h2>Characters to choose from</h2>
+                <div id="charOptions" ></div>
+                
+                <h2>Enemies Available to Attack</h2>
+                <div id="enemies" ></div>
+                
+                <h2 id="fight-heading">Fight Section</h2>
+                <h2>Your Character</h2>
+                <div id="yourCharacter" ></div>
+                <button id="attack">Attack</button>
+                <h2>Opponent</h2>
+                <div id="defender" ></div>
+                <div id="fight" ></div>
+            </div>   
         </div>
-    </script>
-    <script type="text/template" id="attackText">
-        <div class="battle-words">
-            You attacked <%= info.currentEnemy %> for <%= info.currentAttackPower %> damage!
-            <br>
-            <%= info.currentEnemy %> counter attacked damaging your health by <%= info.currentEnemy.counterAttackPower %>
-        </div>
-    </script>
-    <script type="text/template" id="lossTml">
-        <div class="battle-words">
-            You have been defeated by <%= info.currentEnemy %>....Game Over!
-            <br>
-            <button id="restart" >Restart</button>
-        </div>
-    </script>
-    <script type="text/template" id="winRoundTmpl">
-        <div class="battle-words">
-            You attacked have defeated <%= info.currentEnemy %>, you can choose to battle another enemy! 
-        </div>
-    </script>
-    <script type="text/template" id="winGameTmpl">
-        <div class="battle-words">
-            You have won!!! GAME OVER!
-        </div>
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="assets/javascript/game.js"></script>
+    </div>
+            
+
 </body>
 </html>
 

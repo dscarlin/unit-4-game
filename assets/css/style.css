@@ -1,19 +1,59 @@
+html{
+    overflow: hidden;
+}
+body{
+    font-size: 16pt;
+    width: 100%;
+    color: aliceblue;
+    font-weight: bold;
+
+}
+
 .card{
-    width: 12vh;
-    border: solid black 10px;
-
-    padding: .6rem 1.8rem;
+    width: 20vw;
+    min-width: 15vh;
+    max-width: 20vh;
+    height: 12w;
+    min-height: 9vh;
+    max-height: 20vh;
+    border: solid black .2rem;
+    padding: .3rem 1rem;
     text-align:center;
-    font-size: .8rem;
+    font-size: 2vw;
+    color: black;
     display:inline-block;
-
-    
+    overflow: auto;
 }
 .picture{
     width: 100%;
-    height: 4em;
-    margin: .4rem auto
+    height: 5vw;
+    min-height: 8vh;
+    max-height: 10vh;    
+    margin:  .5vw 0 0 auto;
+    border: inset .1rem;
 }
-#charOptions{
+h1{
+    margin:auto;
+    font-size: 4rem;
+    padding: 0 1rem;
+   
+}
+p{
+    font-size: .8rem;
+}
+h1,h2{
+    background:#f0f8ff40;
+    width: fit-content;
+    border-radius: 2rem
+}
+.bg-red{
+    background:red;
 
+}
+.bg-white{
+    background: white;
+}
+.bg-black{
+    background: black;
+    color:aliceblue; 
 }

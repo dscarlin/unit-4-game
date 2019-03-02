@@ -2,32 +2,32 @@ function set(){
     var info = {
         characterArray : 
         [{
-            name: "Frodo\ Baggins",
+            name: "Frodo",
             image: 'assets/images/Frodo.png',
-            healthPower: 120,
-            attackPower: 12,
-            counterAttackPower: 15
+            healthPower: 180,
+            attackPower: 10,
+            counterAttackPower: 10
         },
         {
             name: "Gandalf",
             image: "assets/images/Gandalf.jpg",
-            healthPower: 170,
-            attackPower: 20,
-            counterAttackPower: 30
+            healthPower: 130,
+            attackPower: 25,
+            counterAttackPower: 25
         },
         {
             name: "Aragorn",
             image: "assets/images/Aragorn.jpg",
-            healthPower: 140,
-            attackPower: 12,
+            healthPower: 160,
+            attackPower: 20,
             counterAttackPower: 20
         },
         {
             name: "Sauron",
             image: "assets/images/Sauron.jpg",
-            healthPower: 180,
+            healthPower: 110,
             attackPower: 30,
-            counterAttackPower: 40
+            counterAttackPower: 30
         },
         {
             name: "Gollum",
@@ -40,7 +40,7 @@ function set(){
             name: "Gimli",
             image: "assets/images/Gimli.jpeg",
             healthPower: 110,
-            attackPower: 12,
+            attackPower: 20,
             counterAttackPower: 20
         }],
         yourCharacter: null,
@@ -66,31 +66,31 @@ $enemies.empty()
 $defender.empty()
 $fight.empty()
  
-var cardBg = info.yourCharacter == null ? "bg-red" : "bg-white";  
+
 
 //-------------- funcs --------------------------------//
 
         function makeCharacters(character, index) {
-            var card = $('<div>').attr('class','card '+cardBg).attr('data-index', index)
-            var name = $('<p>').text(character.name)
-            var img = $('<img>').attr('class','picture').attr('src', character.image)
-            var health = $('<p>').text(character.healthPower).attr('id',character.name)
-            card.append(name ,img ,health)
-            $characterOptions.append(card)
+            var card = $('<div>').attr('class','card bg-white').attr('data-index', index);
+            var name = $('<p>').text(character.name);
+            var img = $('<img>').attr('class','picture').attr('src', character.image);
+            var health = $('<p>').text(character.healthPower).attr('id',character.name);
+            card.append(name ,img ,health);
+            $characterOptions.append(card);
             }
 
         function chooseCharacter(){
             var card = $(this); 
             var index = card.attr('data-index');
-            card.remove().attr('class','card bg-white');
+            card.remove().attr('class','card character');
             $yourCharacter.append(card);
-            stack = $("."+cardBg).remove();
+            info.yourCharacter = info.characterArray[index]; 
+            stack = $(".bg-white").remove().attr('class','card bg-red');
             $enemies.append(stack);
             $characterOptions.off();
-            info.yourCharacter = info.characterArray[index]; 
-            info.currentAttackPower = info.yourCharacter.attackPower; 
+            info.currentAttackPower = info.yourCharacter.attackPower;
             $characterOptions.off();   
-            play()  
+            play()          
             }
 
 //makes card for each character from character array in info
@@ -102,10 +102,11 @@ $characterOptions.one('click','.card', chooseCharacter)
 
 function play(){  
    
-    $enemies.one('click',"."+cardBg,function(){
+    $enemies.one('click',".bg-red",function(){
         $fight.empty();
         var card = $(this) 
         var index = card.attr('data-index')
+        
         info.currentEnemy = info.characterArray[index];
         card.remove().attr('class','card bg-black')
         $defender.append(card)
@@ -135,7 +136,7 @@ $attack.on('click',function attack(){
         var tieMessage = 
 
             "Unfortunately you suffered a terminal" +
-            " blow while defeating " + info.currentEnemy.name +
+            " blow<br> while defeating " + info.currentEnemy.name +
             "... Game Over.<br>"
 
         var winGameMessage = 
@@ -201,7 +202,7 @@ $attack.on('click',function attack(){
 }
 $(document).ready(function(){
     set();
-    
+    $('body').backstretch(['assets/images/waterfallbkg.png','assets/images/mordorbkg.jpg','assets/images/middleEarthbkg.jpg','assets/images/middleEarth2bkg.jpg','assets/images/hobbitbkg.jpg','assets/images/bridgebkg.jpg'],{duration: 10000, fade:900 })
    
 })
 
