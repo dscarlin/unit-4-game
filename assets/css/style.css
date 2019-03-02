@@ -23,6 +23,7 @@ body{
     color: black;
     display:inline-block;
     overflow: auto;
+    
 }
 .picture{
     width: 100%;
@@ -30,12 +31,11 @@ body{
     min-height: 8vh;
     max-height: 10vh;    
     margin:  .5vw 0 0 auto;
-    border: inset .1rem;
+    border: black inset .1rem;
 }
 h1{
     margin:auto;
     font-size: 4rem;
-    padding: 0 1rem;
    
 }
 p{
