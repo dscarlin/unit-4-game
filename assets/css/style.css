@@ -57,3 +57,7 @@ h1,h2{
     background: black;
     color:aliceblue; 
 }
+.no-gutters, html{
+    padding:0;
+
+}
