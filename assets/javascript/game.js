@@ -1,19 +1,40 @@
-
+$(document).ready(start);
 //------------- jquery global variables -----------//
 
-var $characterOptions = $('#charOptions');
-var $yourCharacter = $('#yourCharacter');
-var $enemies = $('#enemies');
-var $defender = $('#defender');
-var $attack = $('#attack');//button
-var $fight = $('#fight');//text
-
-var info;
- 
-
+var $characterOptions, $yourCharacter, $enemies,
+    $defender, $attack, $fight, info;
 
 //-------------- funcs --------------------------------//
-        function set(){
+        function start(){
+            backstretch();
+            setVariables();
+            }
+        
+        function backstretch(){
+            $('body ').backstretch(
+                [
+                'assets/images/waterfallbkg.png',
+                'assets/images/mordorbkg.jpg',
+                'assets/images/middleEarthbkg.jpg',
+                'assets/images/middleEarth2bkg.jpg',
+                'assets/images/hobbitbkg.jpg',
+                'assets/images/bridgebkg.jpg'
+                ],
+                {
+                duration: 10000,
+                fade:900 
+                }
+                )
+            }
+
+        function setVariables(){
+            $characterOptions = $('#charOptions');
+            $yourCharacter = $('#yourCharacter');
+            $enemies = $('#enemies');
+            $defender = $('#defender');
+            $attack = $('#attack');//button
+            $fight = $('#fight');//text
+
             info = {
                 characterArray : 
                 [{
@@ -47,7 +68,7 @@ var info;
                 {
                     name: "Gollum",
                     image: "assets/images/Gollum.jpg",
-                    healthPower: 100,
+                    healthPower: 140,
                     attackPower: 12,    
                     counterAttackPower: 10
                 },
@@ -61,17 +82,22 @@ var info;
                 yourCharacter: null,
                 currentEnemy: null,
                 currentAttackPower: 0,
-                
                 };
+            setBoard();
+            }
 
-        //-------------- reset board -----------------------//
-
+        function setBoard(){
             $yourCharacter.empty();
             $enemies.empty();
             $defender.empty();
             $fight.empty();
             makeCharacters();
+            }
 
+        function makeCharacters(){
+            //makes card for each character from character array in info
+            info.characterArray.forEach(makeCharacter);
+            characterClick();
             }
         
         function makeCharacter(character, index) {
@@ -81,12 +107,6 @@ var info;
             var health = $('<p>').text(character.healthPower).attr('id',character.name);
             card.append(name, img, health);
             $characterOptions.append(card);
-            }
-
-        function makeCharacters(){
-            //makes card for each character from character array in info
-            info.characterArray.forEach(makeCharacter);
-            characterClick();
             }
         
         function characterClick(){
@@ -120,6 +140,7 @@ var info;
         function attackClick(){
             $attack.on('click', attack);
             }
+
         function chooseEnemy(){
             $fight.empty();
             var card = $(this) 
@@ -130,7 +151,8 @@ var info;
             };
         
         function attack(){
-            //ready to fight ternary
+            
+
             if (info.yourCharacter && info.currentEnemy){
                 
                 $attack.off();
@@ -183,7 +205,7 @@ var info;
                     info.yourCharacter = null;
                     // attack.off()
                     var restart = $('<button>').on('click', function(){
-                        set(); //clear divs
+                        setVariables(); //clear divs
                         return false;
                     })
                     info.currentEnemy.healthPower = 1
@@ -195,7 +217,7 @@ var info;
                     if ($enemies.children().length == 0){
                         $fight.html(winGameMessage)
                         var restart = $('<button>').on('click', function(){
-                            set(); //clear divs
+                            setVariables(); //clear divs
                             
                         })
                         restart.html("Restart");
@@ -216,32 +238,16 @@ var info;
                 
                 }
         
-        }
+            }
 
 
 
 
-//section of the game that will repeat    
 
 
 
-$(document).ready(function(){
-    set();
-    $('body ').backstretch(
-        [
-        'assets/images/waterfallbkg.png',
-        'assets/images/mordorbkg.jpg',
-        'assets/images/middleEarthbkg.jpg',
-        'assets/images/middleEarth2bkg.jpg',
-        'assets/images/hobbitbkg.jpg',
-        'assets/images/bridgebkg.jpg'
-        ],
-        {
-        duration: 10000,
-        fade:900 
-        }
-        )
-    })
+
+
 
     
 
